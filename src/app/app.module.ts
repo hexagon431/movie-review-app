@@ -8,26 +8,33 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {MovieDetailsPage} from "../pages/movie-details/movie-details";
+import {HttpClientModule} from "@angular/common/http";
+import {MovieApiProvider} from "../providers/movie-api/movie-api";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    MovieDetailsPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    MovieDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    MovieApiProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

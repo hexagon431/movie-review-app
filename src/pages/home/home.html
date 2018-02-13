@@ -32,29 +32,40 @@
   </div>
 
   <div class="popular">
-    <h3>Most Popular</h3>
-    <div class="image-container" *ngFor="let thumb of popular" style="display: flex; justify-content: space-around">
-      <div style="width: 150px; height: 175px; border: 2px solid black;">{{thumb.name}}</div>
-    </div>
-  </div>
-
-
-
-  <div class="row">
-    <div class="row__inner">
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" />
-          <h1>{{thumb.name}}</h1>
-        </div>
-        <div class="tile__details">
-          <div class="tile__title">
-            Top Gear
-          </div>
-        </div>
+    <h3 class="heading">Most Popular</h3>
+    <div class="wrap">
+      <div *ngFor="let thumb of popular" class="scroll">
+        <div class="scrollingBoxes">Popular</div>
       </div>
-
     </div>
   </div>
+
+
+  <div class="disney">
+    <h3 class="heading">Disney</h3>
+    <div class="wrap">
+      <div *ngFor="let thumb of popular" class="scroll">
+        <div class="scrollingBoxes">Disney</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="action">
+    <h3 class="heading">Action</h3>
+    <div class="wrap">
+      <div *ngFor="let thumb of popular" class="scroll">
+        <div class="scrollingBoxes">Action</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footing">
+    <p class="finePrint">movie-review-app LLC, all rights reserved</p>
+  </div>
+
+
+
+
 </ion-content>

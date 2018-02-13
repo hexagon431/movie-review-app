@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {MovieApiProvider} from '../../providers/movie-api/movie-api';
 // import {startAutoplay} from 'ionic-angular/components/slides/swiper/swiper';
 
 
@@ -11,6 +12,9 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  apiKey = '74cff56e7a570daac9b5d7fae1093dc0';
+
+  private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   title = "Movie Reviews";
   posters = [
 
@@ -45,12 +49,13 @@ export class HomePage {
     }
   ];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private movie: MovieApiProvider) {
 
   }
 
   ionViewDidLoad() {
       console.log(this.title);
+      this.movie.getTestMovie()
   }
 
   startAutoplay() {

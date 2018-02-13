@@ -19,11 +19,13 @@ export class MovieDetailsPage {
 
   private selectedMovie: Movie;
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
-  private movieReleaseDate
+  private movieReleaseDate: Date;
+  private segmentOption: string = 'description';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider) {
     this.selectedMovie = movieApi.getTestMovie();
-    console.log(this.selectedMovie.poster_path);
+    this.movieReleaseDate = new Date(this.selectedMovie.release_date);
+
   }
 
   ionViewDidLoad() {

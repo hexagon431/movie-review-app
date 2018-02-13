@@ -11,13 +11,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {MovieDetailsPage} from "../pages/movie-details/movie-details";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieApiProvider} from "../providers/movie-api/movie-api";
+import {MovieSearchPage} from "../pages/movie-search/movie-search";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    MovieDetailsPage
+    MovieDetailsPage,
+    MovieSearchPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {MovieApiProvider} from "../providers/movie-api/movie-api";
     MyApp,
     HomePage,
     ListPage,
-    MovieDetailsPage
+    MovieDetailsPage,
+    MovieSearchPage
   ],
   providers: [
     StatusBar,

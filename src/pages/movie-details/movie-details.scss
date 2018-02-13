@@ -6,13 +6,17 @@ page-movie-details {
 
   .details-header{
     display: flex;
+    overflow: scroll;
   }
 
   .movie-title{
     font-size: 7vw;
     //max-width: ;
-    padding: 5px;
     overflow: scroll;
+  }
+
+  .movie-details{
+    padding: 5px;
   }
 
 }

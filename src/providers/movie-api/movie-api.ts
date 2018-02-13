@@ -71,7 +71,7 @@ export class MovieApiProvider {
 
   constructor(private http: HttpClient){ }
 
-  getMovies(): Observable<any> {
+  getMovies(search: string): Observable<any> {
     return //this.http.get()
   }
 

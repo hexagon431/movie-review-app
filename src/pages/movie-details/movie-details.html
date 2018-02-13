@@ -21,13 +21,43 @@
 
       <div class="movie-details">
         <div class="movie-title">{{selectedMovie.title}}</div>
-        <div class="movie-release-year">{{selectedMovie.release_date}}</div>
+        <div class="movie-release-year"> {{movieReleaseDate.getFullYear()}}</div>
       </div>
 
     </ion-card-header>
 
+    <ion-toolbar no-border>
+      <ion-segment [(ngModel)]="segmentOption">
+        <ion-segment-button value="description">
+          Description
+        </ion-segment-button>
+
+        <ion-segment-button value="trailers">
+          Trailers
+        </ion-segment-button>
+
+        <ion-segment-button value="reviews">
+          Reviews
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+
     <ion-card-content>
-      {{selectedMovie.overview}}
+      <div [ngSwitch]="segmentOption">
+        <div *ngSwitchCase="'description'">
+          {{selectedMovie.overview}}
+        </div>
+
+        <div *ngSwitchCase="'trailers'">
+          trailers go here
+        </div>
+
+        <div *ngSwitchCase="'reviews'">
+          yeet
+        </div>
+      </div>
+
     </ion-card-content>
   </ion-card>
 

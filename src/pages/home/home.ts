@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {MovieApiProvider} from '../../providers/movie-api/movie-api';
-// import {startAutoplay} from 'ionic-angular/components/slides/swiper/swiper';
+import { MovieApiProvider } from '../../providers/movie-api/movie-api';
+
 
 
 
@@ -12,20 +12,21 @@ import {MovieApiProvider} from '../../providers/movie-api/movie-api';
 })
 export class HomePage {
 
+
+  upImage = 'https://image.tmdb.org/t/p/w500/nk11pvocdb5zbFhX5oq5YiLPYMo.jpg';
   apiKey = '74cff56e7a570daac9b5d7fae1093dc0';
 
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   title = "Movie Reviews";
   posters = [
-
-    {
-      image: 'assets/imgs/hobbit.jpg'
-    },
     {
       image: 'assets/imgs/junglebook.jpg'
     },
     {
       image: 'assets/imgs/ozpic.jpg'
+    },
+    {
+      image: 'assets/imgs/hobbit.jpg'
     }
   ];
   popular = [
@@ -48,6 +49,7 @@ export class HomePage {
       name: 'Movie words'
     }
   ];
+  loaded: boolean = false;
 
   constructor(public navCtrl: NavController, private movie: MovieApiProvider) {
 
@@ -55,11 +57,10 @@ export class HomePage {
 
   ionViewDidLoad() {
       console.log(this.title);
-      this.movie.getTestMovie()
+      this.movie.getTestMovie();
+   //   this.loaded = true;
   }
 
-  startAutoplay() {
 
-  }
 }
 

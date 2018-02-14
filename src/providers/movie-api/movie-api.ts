@@ -7,7 +7,7 @@ import {Movie} from "../../interfaces/Movie";
 export class MovieApiProvider {
 
 
-  baseUrl: string = '';
+  baseUrl: string = 'https://image.tmdb.org/t/p/w500';
 
   testMovie: Movie = {
     "adult": false,

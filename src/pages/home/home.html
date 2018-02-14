@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="!loaded" class="sploosh">
+    <div>Loading...</div>
+  </div>
+
+  <div *ngIf="loaded">
   <div class="nav">
     <div class="titleDiv">
       <h3 class="title">{{title}}</h3>
@@ -45,7 +50,9 @@
     <h3 class="heading">Disney</h3>
     <div class="wrap">
       <div *ngFor="let thumb of popular" class="scroll">
-        <div class="scrollingBoxes">Disney</div>
+        <div class="scrollingBoxes">
+          <img src={{upImage}}>
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +72,7 @@
     <p class="finePrint">movie-review-app LLC, all rights reserved</p>
   </div>
 
-
+  </div>
 
 
 </ion-content>

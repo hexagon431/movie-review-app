@@ -75,3 +75,14 @@ margin-left: 5px;
 .finePrint {
   font-size: 8px;
 }
+
+.sploosh{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sploosh div {
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+}

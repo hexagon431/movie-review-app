@@ -2,12 +2,17 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
 import {Movie} from "../../interfaces/Movie";
+import 'rxjs';
 
 @Injectable()
 export class MovieApiProvider {
 
 
-  baseUrl: string = '';
+  movieSearchBaseUrl: string = 'https://api.themoviedb.org/3/movie/';
+  discoverMoviesBaseUrl: string = 'https://api.themoviedb.org/3/discover/movie';
+  moviePosterBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
+  apiKey = "?api_key=74cff56e7a570daac9b5d7fae1093dc0";
+  movies: any = {};
 
   testMovie: Movie = {
     "adult": false,
@@ -71,8 +76,37 @@ export class MovieApiProvider {
 
   constructor(private http: HttpClient){ }
 
-  getMovies(search: string): Observable<any> {
-    return //this.http.get()
+  getPopularMovies(): Observable<any> {
+    return this.http.get(`${this.movieSearchBaseUrl}popular${this.apiKey}`)
+    .map((response: Response) => {
+      this.movies = response;
+      console.log(this.movies);
+      return this.movies;
+    });
+  }
+
+  getMoviesByCompany(companyId: string): Observable<any>{
+    return this.http.get(`${this.discoverMoviesBaseUrl}${this.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_companies=${companyId}`)
+      .map((response: Response) => {
+      this.movies = response;
+      return this.movies;
+      })
+  }
+
+  getMoviesBySearch(search: string): Observable<any> {
+    return this.http.get(`${this.movieSearchBaseUrl}${this.apiKey}&language=en-US&query=${search}&page=1&include_adult=false`)
+      .map((response: Response) => {
+      this.movies = response;
+      return this.movies;
+      })
+  }
+
+  getMoviesByGenre(genreId: string){
+    return this.http.get(`${this.discoverMoviesBaseUrl}${this.apiKey}&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`)
+      .map((response: Response) => {
+      this.movies = response;
+      return this.movies;
+      })
   }
 
   getTestMovie(): Movie{

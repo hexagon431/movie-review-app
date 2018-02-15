@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="loaded">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -7,10 +7,11 @@
   </ion-navbar>
 </ion-header>
 
+<div *ngIf="!loaded" class="sploosh">
+  <div>Loading...</div>
+</div>
+
 <ion-content padding>
-  <div *ngIf="!loaded" class="sploosh">
-    <div>Loading...</div>
-  </div>
 
   <div *ngIf="loaded">
   <div class="nav">
@@ -40,7 +41,9 @@
     <h3 class="heading">Most Popular</h3>
     <div class="wrap">
       <div *ngFor="let thumb of popular" class="scroll">
-        <div class="scrollingBoxes">Popular</div>
+        <div class="scrollingBoxes">
+          <img src={{movie.getPosterPath(thumb.poster_path)}}>
+        </div>
       </div>
     </div>
   </div>
@@ -49,9 +52,9 @@
   <div class="disney">
     <h3 class="heading">Disney</h3>
     <div class="wrap">
-      <div *ngFor="let thumb of popular" class="scroll">
+      <div *ngFor="let thumb of disney" class="scroll">
         <div class="scrollingBoxes">
-          <img src={{upImage}}>
+          <img src={{movie.getPosterPath(thumb.poster_path)}}>
         </div>
       </div>
     </div>
@@ -61,8 +64,10 @@
   <div class="action">
     <h3 class="heading">Action</h3>
     <div class="wrap">
-      <div *ngFor="let thumb of popular" class="scroll">
-        <div class="scrollingBoxes">Action</div>
+      <div *ngFor="let thumb of action" class="scroll">
+        <div class="scrollingBoxes">
+          <img src={{movie.getPosterPath(thumb.poster_path)}}>
+        </div>
       </div>
     </div>
   </div>

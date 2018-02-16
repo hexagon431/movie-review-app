@@ -79,4 +79,8 @@ export class MovieApiProvider {
     return `${this.moviePosterBaseUrl}${pathUrl}`;
   }
 
+  getMovieById(id: number): Observable<any>{
+    return this.http.get(`${this.movieSearchBaseUrl}${id}${this.apiKey}`)
+  }
+
 }

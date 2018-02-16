@@ -5,9 +5,7 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { LoginPage } from '../pages/login/login';
-import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { environment } from "../environments/environment";
@@ -15,8 +13,7 @@ import { environment } from "../environments/environment";
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    ListPage
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -29,8 +26,7 @@ import { environment } from "../environments/environment";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    ListPage
+    LoginPage
   ],
   providers: [
     StatusBar,

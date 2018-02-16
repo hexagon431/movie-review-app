@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
-import {Movie} from "../../interfaces/Movie";
 import 'rxjs';
 
 @Injectable()
@@ -76,6 +75,10 @@ export class MovieApiProvider {
     }
 
   getPosterPath(pathUrl: string){
+    return `${this.moviePosterBaseUrl}${pathUrl}`;
+  }
+
+  getBackdropPath(pathUrl: string){
     return `${this.moviePosterBaseUrl}${pathUrl}`;
   }
 

@@ -18,21 +18,37 @@ export class HomePage {
   // apiKey = '74cff56e7a570daac9b5d7fae1093dc0';
 
   // private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
-  title = "Movie Reviews";
+  title = "Flash Flix";
   posters = [
     {
-      image: 'assets/imgs/junglebook.jpg'
+      title: 'The Jungle Book',
+      id: '278927',
+      poster_path: "/vOipe2myi26UDwP978hsYOrnUWC.jpg",
+      backdrop_path: "/eIOTsGg9FCVrBc4r2nXaV61JF4F.jpg",
     },
     {
-      image: 'assets/imgs/ozpic.jpg'
+      title: "The Hobbit: An Unexpected Journey",
+      id: '49051',
+      poster_path: "/ysX7vDmSh5O19vFjAi56WL7l4nk.jpg",
+      backdrop_path: "/jjAq3tCezdlQduusgtMhpY2XzW0.jpg"
     },
     {
-      image: 'assets/imgs/hobbit.jpg'
+      title: "Rogue One: A Star Wars Story",
+      id: '330459',
+      poster_path: "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg",
+      backdrop_path: "/tZjVVIYXACV4IIIhXeIM59ytqwS.jpg"
+    },
+    {
+      title: "Jumanji: Welcome to the Jungle",
+      id: '353486',
+      poster_path: "/bXrZ5iHBEjH7WMidbUDQ0U2xbmr.jpg",
+      backdrop_path: "/cpz070zEKbPGXzCWuQsNt42PqXY.jpg"
     }
   ];
   disney: Observable<any>;
   popular: Observable<any>;
   action: Observable<any>;
+  comedy: Observable<any>;
   loaded: boolean = false;
 
   constructor(public navCtrl: NavController,
@@ -40,8 +56,6 @@ export class HomePage {
 
   ionViewDidLoad() {
       console.log(this.title);
-      this.loaded = true;
-
 
       this.movie.getPopularMovies().subscribe(
         popular => this.popular = popular.results.sort(function compare(a, b) {
@@ -72,7 +86,22 @@ export class HomePage {
           }
           return 0;
         })
-        );
+      );
+
+      this.movie.getMoviesByGenre('35').subscribe(
+        comedy => this.comedy = comedy.results);
+    //       .sort(function compare(a, b) {
+    //
+    // })
+    //   );
+    this.loaded = true;
+  }
+
+  getDetails(id: string) {
+    this.navCtrl.push('MovieDetailsPage', id);
+  }
+  searchDB(){
+    this.navCtrl.push('MovieSearchPage');
   }
 
 

@@ -1,0 +1,22 @@
+page-movie-details {
+  .movie-poster{
+    width: 110px;
+    height: 165px;
+  }
+
+  .details-header{
+    display: flex;
+    overflow: scroll;
+  }
+
+  .movie-title{
+    font-size: 7vw;
+    //max-width: ;
+    overflow: scroll;
+  }
+
+  .movie-details{
+    padding: 5px;
+  }
+
+}

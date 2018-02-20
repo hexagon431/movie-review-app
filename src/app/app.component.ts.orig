@@ -2,12 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPage } from '../pages/login/login';
+<<<<<<< HEAD
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import {MovieDetailsPage} from "../pages/movie-details/movie-details";
 import {MovieSearchPage} from "../pages/movie-search/movie-search";
+=======
+import { LoginPage } from '../pages/login/login';
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +18,7 @@ import {MovieSearchPage} from "../pages/movie-search/movie-search";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -23,11 +26,14 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
+<<<<<<< HEAD
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'DetailsTest', component: MovieDetailsPage},
-      { title: 'Search', component: MovieSearchPage},
-      { title: 'Login', component: LoginPage }
+      { title: 'Search', component: MovieSearchPage}
+=======
+      { title: 'Login', component: LoginPage },
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
     ];
 
   }

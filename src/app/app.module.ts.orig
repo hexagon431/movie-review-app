@@ -8,22 +8,26 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+<<<<<<< HEAD
 import {MovieDetailsPage} from "../pages/movie-details/movie-details";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieApiProvider} from "../providers/movie-api/movie-api";
 import {MovieSearchPage} from "../pages/movie-search/movie-search";
+=======
 import { environment } from "../environments/environment";
-import {HomePage} from "../pages/home/home";
-import {ListPage} from "../pages/list/list";
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
 
 @NgModule({
   declarations: [
     MyApp,
+<<<<<<< HEAD
     HomePage,
     ListPage,
     MovieDetailsPage,
-    MovieSearchPage,
+    MovieSearchPage
+=======
     LoginPage
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
   ],
   imports: [
     BrowserModule,
@@ -37,17 +41,25 @@ import {ListPage} from "../pages/list/list";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+<<<<<<< HEAD
     HomePage,
     ListPage,
     MovieDetailsPage,
-    MovieSearchPage,
+    MovieSearchPage
+=======
     LoginPage
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
   ],
   providers: [
     StatusBar,
     SplashScreen,
+<<<<<<< HEAD
     MovieApiProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+=======
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+
+>>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
   ]
 })
 export class AppModule {}

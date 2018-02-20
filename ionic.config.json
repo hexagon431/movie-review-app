@@ -1,6 +1,6 @@
 {
   "name": "movie-review-app",
-  "app_id": "",
+  "app_id": "895899fb",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

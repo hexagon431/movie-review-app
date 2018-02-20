@@ -21,10 +21,10 @@ export class HomePage {
   title = "Flash Flix";
   posters = [
     {
-      title: 'The Jungle Book',
-      id: '278927',
-      poster_path: "/vOipe2myi26UDwP978hsYOrnUWC.jpg",
-      backdrop_path: "/eIOTsGg9FCVrBc4r2nXaV61JF4F.jpg",
+      title: "Rogue One: A Star Wars Story",
+      id: '330459',
+      poster_path: "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg",
+      backdrop_path: "/tZjVVIYXACV4IIIhXeIM59ytqwS.jpg"
     },
     {
       title: "The Hobbit: An Unexpected Journey",
@@ -33,10 +33,10 @@ export class HomePage {
       backdrop_path: "/jjAq3tCezdlQduusgtMhpY2XzW0.jpg"
     },
     {
-      title: "Rogue One: A Star Wars Story",
-      id: '330459',
-      poster_path: "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg",
-      backdrop_path: "/tZjVVIYXACV4IIIhXeIM59ytqwS.jpg"
+      title: 'The Jungle Book',
+      id: '278927',
+      poster_path: "/vOipe2myi26UDwP978hsYOrnUWC.jpg",
+      backdrop_path: "/eIOTsGg9FCVrBc4r2nXaV61JF4F.jpg",
     },
     {
       title: "Jumanji: Welcome to the Jungle",
@@ -90,10 +90,7 @@ export class HomePage {
 
       this.movie.getMoviesByGenre('35').subscribe(
         comedy => this.comedy = comedy.results);
-    //       .sort(function compare(a, b) {
-    //
-    // })
-    //   );
+
     this.loaded = true;
   }
 

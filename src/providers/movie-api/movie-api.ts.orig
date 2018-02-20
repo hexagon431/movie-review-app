@@ -1,6 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
+<<<<<<< HEAD
+import {Movie} from "../../interfaces/Movie";
+=======
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 import 'rxjs';
 
 @Injectable()
@@ -55,6 +59,26 @@ export class MovieApiProvider {
       })
   }
 
+<<<<<<< HEAD
+  getMoviesByGenre(genreId: string, releaseYear?: string){
+    if (releaseYear){
+      return this.http.get(`${this.discoverMoviesBaseUrl}${this.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${releaseYear}&with_genres=${genreId}`)
+        .map((response: Response) => {
+          this.movies = response;
+          console.log(this.movies);
+          return this.movies;
+        })
+    }
+    else{
+      return this.http.get(`${this.discoverMoviesBaseUrl}${this.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`)
+        .map((response: Response) => {
+          this.movies = response;
+          console.log(this.movies);
+          return this.movies;
+        })
+    }
+  }
+=======
     getMoviesByGenre(genreId: string, releaseYear?: string){
       if (releaseYear){
         return this.http.get(`${this.discoverMoviesBaseUrl}${this.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${releaseYear}&with_genres=${genreId}`)
@@ -73,17 +97,19 @@ export class MovieApiProvider {
           })
       }
     }
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 
   getPosterPath(pathUrl: string){
     return `${this.moviePosterBaseUrl}${pathUrl}`;
   }
 
-  getMovieById(id: number): Observable<any> {
-    return this.http.get(`${this.movieSearchBaseUrl}${id}${this.apiKey}`);
-  }
-
+<<<<<<< HEAD
+  getMovieById(id: number): Observable<any>{
+    return this.http.get(`${this.movieSearchBaseUrl}${id}${this.apiKey}`)
+=======
   getBackdropPath(pathUrl: string){
     return `${this.moviePosterBaseUrl}${pathUrl}`;
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
   }
 
 }

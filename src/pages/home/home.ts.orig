@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+<<<<<<< HEAD
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {Observable} from "rxjs/Observable";
 import {Nav} from "ionic-angular";
 import {MovieDetailsPage} from "../movie-details/movie-details";
+=======
+import { MovieApiProvider } from '../../providers/movie-api/movie-api';
+import { Observable } from 'rxjs/Observable';
 
 
 
 
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 
 @Component({
   selector: 'page-home',
@@ -15,7 +20,18 @@ import {MovieDetailsPage} from "../movie-details/movie-details";
 })
 export class HomePage {
 
+<<<<<<< HEAD
   movies: Observable<any>;
+
+  constructor(public navCtrl: NavController, movieApi: MovieApiProvider) {
+    movieApi.getPopularMovies().subscribe(data => {
+      this.movies = data;
+    });
+  }
+
+  buttonClicked(movieId: number){
+    this.navCtrl.push(MovieDetailsPage, {id: movieId} );
+=======
 
   upImage = 'https://image.tmdb.org/t/p/w500/nk11pvocdb5zbFhX5oq5YiLPYMo.jpg';
   // apiKey = '74cff56e7a570daac9b5d7fae1093dc0';
@@ -95,6 +111,7 @@ export class HomePage {
         comedy => this.comedy = comedy.results);
 
     this.loaded = true;
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
   }
 
   getDetails(id: string) {

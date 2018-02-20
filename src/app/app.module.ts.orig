@@ -13,42 +13,46 @@ import {MovieDetailsPage} from "../pages/movie-details/movie-details";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieApiProvider} from "../providers/movie-api/movie-api";
 import {MovieSearchPage} from "../pages/movie-search/movie-search";
-=======
 import { environment } from "../environments/environment";
->>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
+import {HomePage} from "../pages/home/home";
+import {ListPage} from "../pages/list/list";
+=======
+import { MovieApiProvider } from '../providers/movie-api/movie-api';
+import { HttpClientModule } from '@angular/common/http';
+
+
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 
 @NgModule({
   declarations: [
     MyApp,
-<<<<<<< HEAD
     HomePage,
     ListPage,
     MovieDetailsPage,
-    MovieSearchPage
-=======
+    MovieSearchPage,
     LoginPage
->>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+<<<<<<< HEAD
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
 
+=======
+    HttpClientModule
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-<<<<<<< HEAD
     HomePage,
     ListPage,
     MovieDetailsPage,
-    MovieSearchPage
-=======
+    MovieSearchPage,
     LoginPage
->>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
   ],
   providers: [
     StatusBar,
@@ -58,8 +62,11 @@ import { environment } from "../environments/environment";
     {provide: ErrorHandler, useClass: IonicErrorHandler}
 =======
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
->>>>>>> ae92d329515eaf541cb75fc086669c76ce95c704
+    MovieApiProvider
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
   ]
 })
 export class AppModule {}
+
+
+

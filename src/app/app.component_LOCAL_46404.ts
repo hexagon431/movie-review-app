@@ -25,22 +25,14 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-<<<<<<< HEAD
       { title: 'DetailsTest', component: MovieDetailsPage},
       { title: 'Search', component: MovieSearchPage},
       { title: 'Login', component: LoginPage }
-=======
-      // { title: 'Login', component: LoginPage },
-      // { title: 'Details', component: DetailsPage }
-
-      // need these pages for menu
->>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
     ];
 
   }
 
   initializeApp() {
-    // this.splashScreen.show();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

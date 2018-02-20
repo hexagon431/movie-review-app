@@ -16,6 +16,8 @@ import { environment } from "../environments/environment";
 import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
 
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -51,3 +53,6 @@ import {ListPage} from "../pages/list/list";
   ]
 })
 export class AppModule {}
+
+
+

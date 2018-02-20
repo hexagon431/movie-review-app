@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="user-card round5">
+    <div class="login-box">
+      <h1 text-center style="color: ghostwhite"> Login </h1>
+      <form class="login-form" name="login">
+        <input type="email" name="email" class="email" placeholder="email" autocomplete="true" />
+        <input type="password" name="password" class="password" placeholder="password" autocomplete="true"/>
+        <input type="submit" name="login" value="Login" class="login" />
+      </form>
+
+      <div class="or"></div>
+
+      <a href="#" class="login-with-google">
+        <ion-icon name="logo-google"></ion-icon>
+        Login with Google
+      </a>
+    </div>
+    <div class="signup-box">
+      <h1 text-center> Sign Up </h1>
+      <form class="signup-form" name="signup">
+        <input type="email" name="email" class="email" placeholder="email" />
+        <input type="password" name="password" class="password" placeholder="password" />
+        <input type="password" name="confirm-password" class="confirm-password" placeholder="confirm-password" />
+        <input type="submit" name="signup" value="Signup" class="signup" />
+      </form>
+    </div>
+
+    <!--Footer -->
+
+    <div ngClass="footer">
+      <span style="color: #A9ADAF">or </span>
+      <a class="toggle-link" href="#">
+      <ion-icon name="person-add"></ion-icon>
+        Sign Up
+      </a>
+    </div>
+  </div>
+
+

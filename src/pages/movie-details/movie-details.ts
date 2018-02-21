@@ -18,7 +18,7 @@ import {Observable} from "rxjs/Observable";
 export class MovieDetailsPage {
 
   private movieId;
-  private selectedMovie: Observable<any>;
+  private selectedMovie: Movie;
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
@@ -31,7 +31,6 @@ export class MovieDetailsPage {
     this.movieApi.getMovieById(this.movieId).subscribe(data => {
       console.log(data);
       this.selectedMovie = data;
-      console.log(this.selectedMovie);
       this.movieReleaseDate = new Date(this.selectedMovie.release_date);
     });
 

@@ -18,7 +18,6 @@ export class HomePage {
   movies: Observable<any>;
 
   upImage = 'https://image.tmdb.org/t/p/w500/nk11pvocdb5zbFhX5oq5YiLPYMo.jpg';
-  // apiKey = '74cff56e7a570daac9b5d7fae1093dc0';
 
   // private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   title = "Flash Flix";
@@ -98,7 +97,8 @@ export class HomePage {
   }
 
   getDetails(id: string) {
-    this.navCtrl.push('MovieDetailsPage', id);
+    console.log(id);
+    this.navCtrl.push(MovieDetailsPage, {id: id});
   }
   searchDB(){
     this.navCtrl.push('MovieSearchPage');

@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-card *ngIf="selectedMovie">
+  <ion-card class="card-details" *ngIf="selectedMovie">
 
     <ion-card-header class="details-header">
       <img class="movie-poster" src="{{movieCoverBaseUrl + selectedMovie.poster_path}}">
@@ -45,15 +45,15 @@
 
     <ion-card-content>
       <div [ngSwitch]="segmentOption">
-        <div *ngSwitchCase="'description'">
+        <div class="info" *ngSwitchCase="'description'">
           {{selectedMovie.overview}}
         </div>
 
-        <div *ngSwitchCase="'trailers'">
+        <div class="info" *ngSwitchCase="'trailers'">
           trailers go here
         </div>
 
-        <div *ngSwitchCase="'reviews'">
+        <div class="info" *ngSwitchCase="'reviews'">
           yeet
         </div>
       </div>

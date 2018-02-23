@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireModule, FirebaseAppProvider} from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
@@ -15,7 +15,6 @@ import {MovieSearchPage} from "../pages/movie-search/movie-search";
 import { environment } from "../environments/environment";
 import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
-
 
 
 @NgModule({
@@ -34,7 +33,6 @@ import {ListPage} from "../pages/list/list";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,6 +47,7 @@ import {ListPage} from "../pages/list/list";
     StatusBar,
     SplashScreen,
     MovieApiProvider,
+    FirebaseAppProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

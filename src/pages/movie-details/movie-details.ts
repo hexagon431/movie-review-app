@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
-import {Observable} from "rxjs/Observable";
+
 /**
  * Generated class for the MovieDetailsPage page.
  *
@@ -24,6 +24,8 @@ export class MovieDetailsPage {
   private segmentOption: string = 'description';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider) {
+
+
 
     this.movieId = this.navParams.get('id');
 

@@ -18,7 +18,7 @@ page-login{
   .user-card
   {
     width: 350px;
-    height: 350px;
+    height: 400px;
     margin: 50px auto;
     position: relative;
     background: #2A2E2D;
@@ -130,9 +130,15 @@ page-login{
     -webkit-border-radius: 3px;
   }
 
+  .login-with-fb:hover,
   .login-with-google:hover
   {
     opacity: 1;
+  }
+
+  .login-with-fb
+  {
+    background: #527EBF
   }
 
   .login-with-google
@@ -140,6 +146,7 @@ page-login{
     background: #DB4A37;
   }
 
+  .login-with-fb .icon,
   .login-with-google .icon
   {
     float: left;

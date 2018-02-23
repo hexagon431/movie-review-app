@@ -18,7 +18,7 @@ page-login{
   .user-card
   {
     width: 350px;
-    height: 400px;
+    height: 380px;
     margin: 50px auto;
     position: relative;
     background: #2A2E2D;
@@ -55,7 +55,7 @@ page-login{
   }
 
   .login-box,
-  .signup-box
+  .signUp-box
   {
     position: absolute;
     top: 0;
@@ -73,9 +73,9 @@ page-login{
     right: 0px;
   }
 
-  .signup-box{
-    padding: 40px;
-    right: -350px;
+  .signUp-box{
+    padding: 20px 40px;
+    right: 0px;
   }
 
   .login, .signup

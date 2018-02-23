@@ -6,7 +6,7 @@ import 'rxjs';
 @Injectable()
 export class MovieApiProvider {
 
-
+  movieSearchQueryBaseUrl: string = 'https://api.themoviedb.org/3/search/movie';
   movieSearchBaseUrl: string = 'https://api.themoviedb.org/3/movie/';
   discoverMoviesBaseUrl: string = 'https://api.themoviedb.org/3/discover/movie';
   moviePosterBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
@@ -47,7 +47,7 @@ export class MovieApiProvider {
   }
 
   getMoviesBySearch(search: string): Observable<any> {
-    return this.http.get(`${this.movieSearchBaseUrl}${this.apiKey}&language=en-US&query=${search}&page=1&include_adult=false`)
+    return this.http.get(`${this.movieSearchQueryBaseUrl}${this.apiKey}&language=en-US&query=${search}&page=1&include_adult=false`)
       .map((response: Response) => {
         this.movies = response;
         console.log(this.movies);

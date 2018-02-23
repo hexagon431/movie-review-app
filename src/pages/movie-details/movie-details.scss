@@ -6,17 +6,28 @@ page-movie-details {
 
   .details-header{
     display: flex;
-    overflow: scroll;
+  }
+  .movie-release-year{
+    color: ghostwhite;
+    padding-left: 5px;
   }
 
   .movie-title{
     font-size: 7vw;
-    //max-width: ;
-    overflow: scroll;
+    color: ghostwhite;
+    padding-left: 5px;
+    white-space: initial;
   }
 
   .movie-details{
     padding: 5px;
+    width: 100%;
   }
 
+  .card-details {
+    background-color: #2B2E2D;
+  }
+  .info{
+    color: ghostwhite;
+  }
 }

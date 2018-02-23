@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
+import {AngularFireAuth} from "angularfire2/auth";
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -22,9 +23,13 @@ export class MovieDetailsPage {
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
+<<<<<<< HEAD
   writeReview = false;
+=======
+  private loginState;
+>>>>>>> b1f56f8843dc17cbcd87ccc79a6022011a69a906
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider, private angularFireAuth: AngularFireAuth) {
 
 
 
@@ -36,6 +41,11 @@ export class MovieDetailsPage {
       this.selectedMovie = data;
       this.movieReleaseDate = new Date(this.selectedMovie.release_date);
     });
+
+    this.angularFireAuth.authState.subscribe(state => {
+      this.loginState = state;
+      console.log(state);
+    })
 
   }
   ionViewDidLoad() {

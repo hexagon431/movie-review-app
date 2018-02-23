@@ -4,7 +4,11 @@ import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {Observable} from "rxjs/Observable";
 import {Nav} from "ionic-angular";
 import {MovieDetailsPage} from "../movie-details/movie-details";
+<<<<<<< HEAD
 import {MovieSearchPage} from '../movie-search/movie-search';
+=======
+import {MovieSearchPage} from "../movie-search/movie-search";
+>>>>>>> b1f56f8843dc17cbcd87ccc79a6022011a69a906
 
 
 

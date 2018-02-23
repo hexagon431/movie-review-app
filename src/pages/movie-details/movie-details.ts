@@ -22,6 +22,7 @@ export class MovieDetailsPage {
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
+  writeReview = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider) {
 
@@ -39,6 +40,10 @@ export class MovieDetailsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
+  }
+
+  createReview(){
+    this.writeReview = true;
   }
 
 }

@@ -97,4 +97,9 @@
   </div>
 
 
+<<<<<<< HEAD
+  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <button (click)="buttonClicked(11)">go to movie details page and pass in parameters</button>
+=======
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 </ion-content>

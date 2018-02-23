@@ -14,10 +14,11 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+<<<<<<< HEAD
 .tmdb-logo{
   padding: 16px;
   width: 160px;
-}
+=======
 
 
 .fixed-content {
@@ -34,5 +35,5 @@ h3 {
 }
 .toolbar-title{
   color: ghostwhite;
+>>>>>>> 2a8783cdbc545d4c99c450f811d0aba10c824ba0
 }
-

@@ -57,7 +57,8 @@
     <ion-card-header class="review-title">Movie Reviews</ion-card-header>
     <ion-card-content>
       <form>
-        <ion-textarea class="text" maxlength="140"></ion-textarea>
+        <ion-textarea [(ngModel)]="reviewText" class="text" maxlength="140" name="text"></ion-textarea>
+        <span class="characters">{{maxCharacters - reviewText.length}} characters remaining</span>
         <button ion-button (click)="submitReview()">Submit Review<span><ion-icon name="create-outline" icon-right></ion-icon></span></button>
       </form>
     </ion-card-content>

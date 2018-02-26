@@ -26,6 +26,8 @@ export class MovieDetailsPage {
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
   private loginState;
+  reviewText = "";
+  maxCharacters = 140;
 
 
   constructor(public navCtrl: NavController,
@@ -53,6 +55,9 @@ export class MovieDetailsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
+    // if(this.reviewText === undefined) {
+    //   this.reviewText = 0;
+    // }
   }
 
   SubmitReview(){
@@ -63,7 +68,6 @@ export class MovieDetailsPage {
   }
   submitReview(){
     this.firebase.object('reviews/'+this.movieId).set({
-
     });
   }
 }

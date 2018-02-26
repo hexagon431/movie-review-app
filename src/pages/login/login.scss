@@ -9,7 +9,9 @@ page-login{
 
   .email,
   .password,
-  .confirm-password {
+  .confirm-password,
+  .user,
+  .name {
     color: ghostwhite;
   }
   ::placeholder{

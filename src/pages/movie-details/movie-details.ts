@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from 'angularfire2/database';
+
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -23,13 +25,14 @@ export class MovieDetailsPage {
   private movieCoverBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
-<<<<<<< HEAD
-  writeReview = false;
-=======
   private loginState;
->>>>>>> b1f56f8843dc17cbcd87ccc79a6022011a69a906
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider, private angularFireAuth: AngularFireAuth) {
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private movieApi: MovieApiProvider,
+              private angularFireAuth: AngularFireAuth,
+              private firebase: AngularFireDatabase) {
 
 
 
@@ -52,8 +55,18 @@ export class MovieDetailsPage {
     console.log('ionViewDidLoad MovieDetailsPage');
   }
 
-  createReview(){
-    this.writeReview = true;
+  SubmitReview(){
+    this.firebase.object('users').set({
+      username: "trash",
+      email: "piss"
+    });
   }
+  submitReview(){
+    this.firebase.object('reviews/'+this.movieId).set({
 
+    });
+  }
 }
+
+
+

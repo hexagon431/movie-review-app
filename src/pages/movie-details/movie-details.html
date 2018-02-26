@@ -53,8 +53,14 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-
+  <ion-card class="card-details">
+    <ion-card-header class="review-title">Movie Reviews</ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-textarea class="text" maxlength="140"></ion-textarea>
+        <button ion-button (click)="submitReview()">Submit Review<span><ion-icon name="create-outline" icon-right></ion-icon></span></button>
+      </form>
+    </ion-card-content>
   </ion-card>
 
 

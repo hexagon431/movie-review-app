@@ -9,7 +9,9 @@ page-login{
 
   .email,
   .password,
-  .confirm-password {
+  .confirm-password,
+  .user,
+  .name {
     color: ghostwhite;
   }
   ::placeholder{
@@ -18,14 +20,14 @@ page-login{
   .user-card
   {
     width: 350px;
-    height: 400px;
-    margin: 50px auto;
+    height: 385px;
+    margin: 70px auto;
     position: relative;
     background: #2A2E2D;
     overflow: hidden;
-    box-shadow:         0 1px 3px 0 rgba(0,0,0,0.08);
-    -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,0.08);
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+    box-shadow:         0 1px 3px 0 ghostwhite;
+    -moz-box-shadow:    0 1px 3px 0 ghostwhite;
+    -webkit-box-shadow: 0 1px 3px 0 ghostwhite;
     border-radius:         5px;
     -moz-border-radius:    5px;
     -webkit-border-radius: 5px;
@@ -40,7 +42,7 @@ page-login{
     -webkit-border-radius: 3px;
     border: 1px solid #2A2E2D;
     padding: 3px 12px;
-    margin: 6px 0;
+    margin: 5px 0;
     background-color: #44484B;
   }
 
@@ -55,7 +57,7 @@ page-login{
   }
 
   .login-box,
-  .signup-box
+  .signUp-box
   {
     position: absolute;
     top: 0;
@@ -73,9 +75,9 @@ page-login{
     right: 0px;
   }
 
-  .signup-box{
-    padding: 40px;
-    right: -350px;
+  .signUp-box{
+    padding: 20px 40px;
+    right: 0px;
   }
 
   .login, .signup
@@ -119,8 +121,8 @@ page-login{
     width: 100%;
     height: 40px;
     display: block;
-    margin: 15px 0;
-    color: #fff;
+    margin: 12px 0;
+    color: ghostwhite;
     text-align: center;
     line-height: 40px;
     font-size: 14px;

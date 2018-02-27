@@ -8,18 +8,18 @@
 
 <ion-content padding>
   <div class="user-card round5">
-    <div class="login-box">
+    <div class="login-box" *ngIf="loginMode">
       <h1 text-center style="color: ghostwhite"> Login </h1>
       <form class="login-form" name="login">
-        <input [(ngModel)]="email" type="email" name="email" class="email" placeholder="email" autocomplete="true" />
-        <input [(ngModel)]="password" type="password" name="password" class="password" placeholder="password" autocomplete="true"/>
+        <input [(ngModel)]="email" type="email" name="email" class="email" placeholder="Email" autocomplete="true" required />
+        <input [(ngModel)]="password" type="password" name="password" class="password" placeholder="Password" autocomplete="true" required/>
         <input type="submit" name="login" value="Login" class="login" (click)="login()"/>
       </form>
 
       <div class="or"></div>
       <a href="#" (click)="fbLogin()" class="login-with-fb">
         <ion-icon name="logo-facebook"></ion-icon>
-        Login with facebook
+        Login with Facebook
       </a>
 
       <a href="#" (click)="googleLogin()" class="login-with-google">
@@ -28,13 +28,15 @@
       </a>
 
     </div>
-    <div class="signup-box">
-      <h1 text-center> Sign Up </h1>
-      <form class="signup-form" name="signup">
-        <input type="email" name="email" class="email" placeholder="email" />
-        <input type="password" name="password" class="password" placeholder="password" />
-        <input type="password" name="confirm-password" class="confirm-password" placeholder="confirm-password" />
-        <input type="submit" name="signup" value="Signup" class="signup" />
+    <div class="signUp-box" *ngIf="!loginMode">
+      <h1 text-center style="color: ghostwhite"> Sign Up </h1>
+      <form class="signUp-form" name="signUp">
+        <input type="text" name="name" class="name" placeholder="Name" required/>
+        <input type="text" name="user" class="user" placeholder="Username" required/>
+        <input type="email" name="email" class="email" placeholder="Email" required/>
+        <input type="password" name="password" class="password" placeholder="Password" required/>
+        <input type="password" name="confirm-password" class="confirm-password" placeholder="Confirm Password" required />
+        <input type="submit" name="signup" value="Sign Up" class="signup" />
       </form>
     </div>
 
@@ -42,7 +44,7 @@
 
     <div ngClass="footer">
       <span style="color: #A9ADAF">or </span>
-      <a class="toggle-link" href="#">
+      <a class="toggle-link" href="#" (click)="toggleLoginMode()">
       <ion-icon name="person-add"></ion-icon>
         Sign Up
       </a>

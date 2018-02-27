@@ -55,9 +55,6 @@ export class MovieDetailsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
-    // if(this.reviewText === undefined) {
-    //   this.reviewText = 0;
-    // }
   }
 
   SubmitReview(){
@@ -68,6 +65,7 @@ export class MovieDetailsPage {
   }
   submitReview(){
     this.firebase.object('reviews/'+this.movieId).set({
+
     });
   }
 }

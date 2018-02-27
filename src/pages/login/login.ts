@@ -30,14 +30,14 @@ export class LoginPage {
   }
 
   fbLogin(){
-    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
       // this.navCtrl.pop(LoginPage);
     });
   }
   googleLogin(){
-    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     this.angularFirestore.collection('users').add({name: "beep"}).then(data => {
       console.log(data);
       // this.navCtrl.pop(LoginPage);

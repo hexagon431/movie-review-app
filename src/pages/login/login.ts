@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from "firebase/app";
+import {AngularFireDatabase} from "angularfire2/database";
 
 
 @Component({
@@ -16,14 +17,27 @@ export class LoginPage {
   email: string;
   password: string;
 
-  constructor(private angularFireAuth: AngularFireAuth, private angularFirestore: AngularFirestore){
+  constructor(private angularFireAuth: AngularFireAuth, private angularFirestore: AngularFirestore, private firebase: AngularFireDatabase){
   }
 
   login(){
-    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password)
+    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(() =>{
+
+      let currentUser = this.angularFireAuth.auth.currentUser.uid;
+
+
+
+    this.firebase.object(`users/${currentUser}`).set({
+          userId: currentUser,
+          email: this.email,
+          password: this.password
+         });
+    });
+
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
     });
+
   }
 
   fbLogin(){
@@ -31,6 +45,8 @@ export class LoginPage {
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
     });
+
+
   }
   googleLogin(){
     this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -38,8 +54,9 @@ export class LoginPage {
       console.log(data);
     });
     this.loggedIn = true;
-  }
 
+
+  }
 }
 
 

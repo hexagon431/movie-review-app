@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from "angularfire2/database";
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -24,8 +25,10 @@ export class MovieDetailsPage {
   private movieReleaseDate: Date;
   private segmentOption: string = 'description';
   private loginState;
+  private reviews;
+  private review;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider, private angularFireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private movieApi: MovieApiProvider, private angularFireAuth: AngularFireAuth, private firebase: AngularFireDatabase) {
 
 
 
@@ -46,6 +49,26 @@ export class MovieDetailsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
+  }
+
+  SubmitReview(){
+    this.firebase.object('users').set({
+      username: "trash",
+      email: "piss"
+    });
+  }
+  submitReview(){
+    let userId;
+    this.angularFireAuth.auth.currentUser.getIdToken(true).then(idToken => {
+      userId = idToken;
+    }).catch(error =>{
+
+    });
+
+    this.firebase.object('reviews/'+this.movieId).set({
+      userId: userId,
+      review: this.review
+    });
   }
 
 }

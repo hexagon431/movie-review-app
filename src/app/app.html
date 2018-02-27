@@ -11,6 +11,11 @@
         {{p.title}}
       </button>
 
+      <button menuClose ion-item *ngIf="authStatus == null" (click)="openLogin()">Sign in</button>
+
+      <button menuClose ion-item *ngIf="authStatus != null">Sign out</button>
+
+
       <img class="tmdb-logo" src="../assets/imgs/tmdb.png">
     </ion-list>
 

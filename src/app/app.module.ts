@@ -15,6 +15,7 @@ import {MovieSearchPage} from "../pages/movie-search/movie-search";
 import { environment } from "../environments/environment";
 import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
+import {AngularFireDatabase} from "angularfire2/database";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {ListPage} from "../pages/list/list";
     StatusBar,
     SplashScreen,
     MovieApiProvider,
+    AngularFireDatabase,
     FirebaseAppProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

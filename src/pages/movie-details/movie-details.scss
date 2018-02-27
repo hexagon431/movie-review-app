@@ -30,4 +30,27 @@ page-movie-details {
   .info{
     color: ghostwhite;
   }
+  span{
+    padding-left: 10px;
+  }
+  .text{
+    background-color: #44484B;
+    height: 150px;
+    color: ghostwhite;
+    font-size: 18px;
+  }
+  textarea{
+    height: 100%;
+  }
+  .review-title{
+    font-size: 7vw;
+    color: ghostwhite;
+    white-space: initial;
+    text-align: center;
+  }
+  .characters{
+    color: ghostwhite;
+    padding: 0;
+
+  }
 }

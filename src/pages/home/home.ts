@@ -4,6 +4,7 @@ import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {Observable} from "rxjs/Observable";
 import {Nav} from "ionic-angular";
 import {MovieDetailsPage} from "../movie-details/movie-details";
+import {MovieSearchPage} from "../movie-search/movie-search";
 
 
 
@@ -101,7 +102,7 @@ export class HomePage {
     this.navCtrl.push(MovieDetailsPage, {id: id});
   }
   searchDB(){
-    this.navCtrl.push('MovieSearchPage');
+    this.navCtrl.push(MovieSearchPage);
   }
 
 

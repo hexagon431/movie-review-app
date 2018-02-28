@@ -4,6 +4,8 @@ import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+import {ReviewType} from '../../interfaces/ReviewType';
 
 
 /**
@@ -28,6 +30,8 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
+  subscribedReviews: any;
+  private reviewType: ReviewType;
 
 
   constructor(public navCtrl: NavController,
@@ -55,20 +59,37 @@ export class MovieDetailsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
+    this.displayReviews();
   }
 
-  SubmitReview(){
-    this.firebase.object('users').set({
-      username: "trash",
-      email: "piss"
-    });
-  }
   submitReview(){
-    this.firebase.object('reviews/'+this.movieId).set({
-
+    this.firebase.object(`reviews/${this.movieId}`).set({
+      author: 'gLLmVvzgrZMF16fmywyTGCprarA2',
+      reviewType: this.reviewType,
+      review: this.reviewText
     });
+    this.reviewText = '';
   }
+  positive(){
+    this.reviewType = ReviewType.POSITIVE;
+    console.log(ReviewType.POSITIVE)
+  }
+  negative(){
+    this.reviewType = ReviewType.NEGATIVE;
+    console.log(ReviewType.NEGATIVE)
+
+  }
+  displayReviews() {
+    this.firebase.object(`reivews/${this.movieId}`);
+  }
+  addToFavorites(){
+    //add crap to a personalized favorites array visible on favorites page
+    console.log("Movie added to favorites");
+  }
+
 }
+
+
 
 
 

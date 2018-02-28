@@ -22,7 +22,7 @@ export class LoginPage {
   }
 
   login(){
-    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password)
+    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password);
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
       //this.navCtrl.pop(LoginPage);
@@ -30,7 +30,7 @@ export class LoginPage {
   }
 
   fbLogin(){
-    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
       // this.navCtrl.pop(LoginPage);

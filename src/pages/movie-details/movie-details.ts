@@ -4,6 +4,10 @@ import {Movie} from "../../interfaces/Movie";
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+import {ReviewType} from '../../interfaces/ReviewType';
+import _ from 'lodash';
+import {Review} from "../../interfaces/Review";
 
 
 /**
@@ -28,6 +32,9 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
+  private reviewType: ReviewType;
+  private reviews = [];
+  userId: string;
 
 
   constructor(public navCtrl: NavController,
@@ -50,27 +57,57 @@ export class MovieDetailsPage {
     this.angularFireAuth.authState.subscribe(state => {
       this.loginState = state;
       console.log(state);
-    })
+    });
+
+    this.displayReviews();
 
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');
-    // if(this.reviewText === undefined) {
-    //   this.reviewText = 0;
-    // }
+
   }
 
-  SubmitReview(){
-    this.firebase.object('users').set({
-      username: "trash",
-      email: "piss"
-    });
-  }
   submitReview(){
-    this.firebase.object('reviews/'+this.movieId).set({
+    this.userId = this.angularFireAuth.auth.currentUser.uid;
+    this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
+      reviewType: this.reviewType,
+      review: this.reviewText
+
+    });
+    this.reviewText = '';
+  }
+  positive(){
+    this.reviewType = ReviewType.POSITIVE;
+    console.log(ReviewType.POSITIVE)
+  }
+  negative(){
+    this.reviewType = ReviewType.NEGATIVE;
+    console.log(ReviewType.NEGATIVE)
+
+  }
+  displayReviews() {
+    let array = [];
+    this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
+      console.log(object);
+      _.forIn(object, function(value, key) {
+        array.push({
+          userId: key,
+          review: object[key].review,
+          reviewType: object[key].reviewType
+        })
+      });
+      this.reviews = array;
+
     });
   }
+  addToFavorites(){
+    //add crap to a personalized favorites array visible on favorites page
+    console.log("Movie added to favorites");
+  }
+
 }
+
+
 
 
 

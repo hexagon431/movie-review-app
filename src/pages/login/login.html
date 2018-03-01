@@ -34,11 +34,11 @@
     <div class="signUp-box" *ngIf="!loginMode">
       <h1 class="title"> Sign Up </h1>
       <form class="signUp-form" name="signUp">
-        <input type="text" name="user" class="user" placeholder="Username" autocomplete="off" required/>
-        <input type="email" name="email" class="email" placeholder="Email" autocomplete="off" required/>
-        <input type="password" name="password" class="password" placeholder="Password" autocomplete="off" required/>
-        <input type="password" name="confirm-password" class="confirm-password" placeholder="Confirm Password" autocomplete="off" required />
-        <a type="submit" name="signup" class="signup" (click)="signup()">
+        <input [(ngModel)]="username" type="text" name="username" class="username" placeholder="Username" autocomplete="off" required/>
+        <input [(ngModel)]="email" type="email" name="email" class="email" placeholder="Email" autocomplete="off" required/>
+        <input [(ngModel)]="password" type="password" name="password" class="password" placeholder="Password" autocomplete="off" required/>
+        <input [(ngModel)]="password" type="password" name="confirm-password" class="confirm-password" placeholder="Confirm Password" autocomplete="off" required />
+        <a type="submit" name="signup" class="signup" (click)="signUp()">
           <ion-icon name="md-person-add"></ion-icon>
           Create Account
         </a>

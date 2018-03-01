@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 //import { NavController } from 'ionic-angular';
-import { AngularFirestore } from 'angularfire2/firestore';
+ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from "firebase/app";
+// import { AngularFireDatabase} from "angularfire2/database";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginPage {
   loggedIn=false;
   email: string;
   password: string;
+  username: string;
   loginMode: boolean = true;
 
   constructor(private angularFireAuth: AngularFireAuth, private angularFirestore: AngularFirestore){
@@ -22,23 +24,23 @@ export class LoginPage {
   }
 
   login(){
-    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password)
-    this.angularFirestore.collection('users').add({name: "user"}).then(data=> {
+    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password);
+    this.angularFirestore.collection('users').add({name: name}).then(data=> {
       console.log(data);
       //this.navCtrl.pop(LoginPage);
     });
   }
 
   fbLogin(){
-    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())
-    this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+    this.angularFirestore.collection('users').add({name: "User"}).then(data=> {
       console.log(data);
       // this.navCtrl.pop(LoginPage);
     });
   }
   googleLogin(){
     this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    this.angularFirestore.collection('users').add({name: "beep"}).then(data => {
+    this.angularFirestore.collection('users').add({name: "user"}).then(data => {
       console.log(data);
       // this.navCtrl.pop(LoginPage);
     });
@@ -50,7 +52,12 @@ export class LoginPage {
 
   }
 
-}
+ signUp(){
+   this.angularFireAuth.auth.createUserWithEmailAndPassword(this.email, this.password);
+   this.angularFirestore.collection('users').add({name: this.username})
 
+  }
+
+}
 
 

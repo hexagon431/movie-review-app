@@ -23,7 +23,7 @@ export class LoginPage {
 
   login(){
     this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password)
-    this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
+    this.angularFirestore.collection('users').add({name: "user"}).then(data=> {
       console.log(data);
       //this.navCtrl.pop(LoginPage);
     });
@@ -47,6 +47,7 @@ export class LoginPage {
 
   toggleLoginMode() {
     this.loginMode = !this.loginMode;
+
   }
 
 }

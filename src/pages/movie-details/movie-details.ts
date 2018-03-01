@@ -30,8 +30,9 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
-  subscribedReviews: any;
   private reviewType: ReviewType;
+  review: any;
+  userId: string;
 
 
   constructor(public navCtrl: NavController,
@@ -63,10 +64,11 @@ export class MovieDetailsPage {
   }
 
   submitReview(){
-    this.firebase.object(`reviews/${this.movieId}`).set({
-      author: 'gLLmVvzgrZMF16fmywyTGCprarA2',
+    this.userId = this.angularFireAuth.auth.currentUser.uid;
+    this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
       reviewType: this.reviewType,
       review: this.reviewText
+
     });
     this.reviewText = '';
   }
@@ -80,7 +82,7 @@ export class MovieDetailsPage {
 
   }
   displayReviews() {
-    this.firebase.object(`reivews/${this.movieId}`);
+    this.firebase.object(`reivews/${this.movieId}`).valueChanges().subscribe( object => this.review = object)
   }
   addToFavorites(){
     //add crap to a personalized favorites array visible on favorites page

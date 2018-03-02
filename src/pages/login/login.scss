@@ -7,7 +7,7 @@ page-login{
   }
 
 .title{
-  color: #212121;
+  color: lightgray;
   text-shadow: 0px 1px 1px #4d4d4d;
   font-size: 40px;
   text-align: center;
@@ -17,12 +17,12 @@ page-login{
   .confirm-password,
   .user,
   .name {
-    color: #222;
+    color: ghostwhite;
     text-shadow: 0px 1px 1px #4d4d4d;
     font-size: 17px;
   }
   ::placeholder{
-    color: #222;
+    color: ghostwhite;
     text-shadow: 0px 1px 1px #4d4d4d;
     font-size: 17px;
   }

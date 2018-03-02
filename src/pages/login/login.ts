@@ -14,7 +14,6 @@ import {UserDetailsProvider} from "../../providers/user-details/user-details";
 })
 
 export class LoginPage {
-  loggedIn=false;
   email: string;
   password: string;
   loginMode: boolean = true;
@@ -44,7 +43,7 @@ export class LoginPage {
   }
 
   fbLogin(){
-    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
     this.angularFirestore.collection('users').add({name: "beep"}).then(data=> {
       console.log(data);
       // this.navCtrl.pop(LoginPage);
@@ -56,7 +55,6 @@ export class LoginPage {
       console.log(data);
       // this.navCtrl.pop(LoginPage);
     });
-    this.loggedIn = true;
   }
 
   toggleLoginMode() {

@@ -19,6 +19,7 @@ export class LoginPage {
   password: string;
   username: string;
   loginMode: boolean = true;
+  currentUser;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -29,22 +30,22 @@ export class LoginPage {
   }
 
   login(){
-    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password);
-    this.angularFirestore.collection('users').add({name: name}).then(data=> {
-      console.log(data);
-      this.navCtrl.setRoot(HomePage);
-      let currentUser = this.angularFireAuth.auth.currentUser.uid;
-      console.log(this.angularFireAuth.auth.currentUser);
+    this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(result => {
+      this.currentUser = this.angularFireAuth.auth.currentUser.uid;
+      this.angularFirestore.collection('users').add({name: name}).then(data=> {
+        console.log(data);
+        this.navCtrl.setRoot(HomePage);
+        console.log(this.angularFireAuth.auth.currentUser);
 
-      this.firebase.object(`users/${currentUser}`).set({
-        userId: currentUser,
-        email: this.email,
-        password: this.password
+        this.firebase.object(`users/${this.currentUser}`).set({
+          userId: this.currentUser,
+          email: this.email,
+          password: this.password
+        });
+
+        this.userDetails.setCurrentUser(this.angularFireAuth.auth.currentUser);
       });
-
-      this.userDetails.setCurrentUser(this.angularFireAuth.auth.currentUser);
     });
-    this.loggedIn = true;
   }
 
   fbLogin(){
@@ -53,7 +54,6 @@ export class LoginPage {
     this.angularFirestore.collection('users').add({name: "User"}).then(data=> {
       console.log(data);
     });
-    this.loggedIn = true;
   }
   googleLogin(){
     this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());

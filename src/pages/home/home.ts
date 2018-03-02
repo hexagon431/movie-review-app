@@ -53,6 +53,7 @@ export class HomePage {
   action: Observable<any>;
   comedy: Observable<any>;
   loaded: boolean = false;
+  favorites: any[];
 
   constructor(public navCtrl: NavController,
               public movie: MovieApiProvider) { }

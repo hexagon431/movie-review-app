@@ -16,6 +16,7 @@ import { environment } from "../environments/environment";
 import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
 import {AngularFireDatabase} from 'angularfire2/database';
+import {UserDetailsProvider} from "../providers/user-details/user-details";
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
     StatusBar,
     SplashScreen,
     MovieApiProvider,
+    UserDetailsProvider,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

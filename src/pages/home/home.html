@@ -89,6 +89,18 @@
     </div>
   </div>
 
+  <div class="favorites">
+    <h3 class="heading">Favorites</h3>
+    <h3 *ngIf="!favorites">You have no movies in your favorites collection.</h3>
+    <div class="wrap" *ngIf="favorites">
+      <div *ngFor="let thumb of favorites" class="scroll">
+        <div class="scrollingBoxes" (click)="getDetails(thumb.id)">
+          <img src={{movie.getPosterPath(thumb.poster_path)}}>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="footing">
     <p class="finePrint">Flash Flix LLC, all rights reserved</p>

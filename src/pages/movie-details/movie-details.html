@@ -21,7 +21,10 @@
 
       <div class="movie-details">
         <div class="movie-title">{{selectedMovie.title}}</div>
-        <div class="movie-release-year"> {{movieReleaseDate.getFullYear()}}</div>
+        <div class="placement">
+          <div class="movie-release-year"> {{movieReleaseDate.getFullYear()}}</div>
+          <div class="bookmark"><ion-icon name="ios-bookmark-outline" (click)="addToFavorites()"></ion-icon></div>
+        </div>
       </div>
 
     </ion-card-header>
@@ -53,8 +56,24 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="selectedMovie"  class="card-details">
+    <ion-card-header class="review-title">Movie Reviews</ion-card-header>
+    <ion-card-content>
+      <h6>Write a review...</h6>
+      <form>
+        <ion-textarea [(ngModel)]="reviewText" class="text" maxlength="140" name="text" required></ion-textarea>
+        <span class="characters">{{maxCharacters - reviewText.length}} characters</span><br>
 
+        <ion-icon class="thumb" name="thumbs-down" (click)="negative()"></ion-icon><ion-icon class="thumb" name="thumbs-up" (click)="positive()"></ion-icon>
+
+        <button class="submit" ion-button (click)="submitReview()">Submit<span><ion-icon name="create-outline" icon-right></ion-icon></span></button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-details" *ngFor="let review of reviews">
+    <ion-card-header style="color: ghostwhite">{{review.reviewType}}</ion-card-header>
+    <ion-card-content style="color: ghostwhite">{{review.review}}</ion-card-content>
   </ion-card>
 
 

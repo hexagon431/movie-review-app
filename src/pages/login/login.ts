@@ -44,17 +44,15 @@ export class LoginPage {
 
       this.userDetails.setCurrentUser(this.angularFireAuth.auth.currentUser);
     });
-    this.loggedIn = true;
   }
 
   fbLogin(){
     this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
-
     this.angularFirestore.collection('users').add({name: "User"}).then(data=> {
       console.log(data);
     });
-    this.loggedIn = true;
   }
+
   googleLogin(){
     this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
 

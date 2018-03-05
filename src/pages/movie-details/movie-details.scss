@@ -20,6 +20,9 @@ page-movie-details {
   }
 
   .movie-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 5px;
     width: 100%;
   }
@@ -27,7 +30,54 @@ page-movie-details {
   .card-details {
     background-color: #2B2E2D;
   }
+  .card-details:nth-child(2){
+    margin-top: 25px;
+  }
   .info{
     color: ghostwhite;
+  }
+  span{
+    padding-left: 10px;
+  }
+  .text{
+    background-color: #44484B;
+    height: 125px;
+    color: ghostwhite;
+    font-size: 18px;
+  }
+  textarea{
+    height: 100%;
+  }
+  .review-title{
+    font-size: 7vw;
+    color: ghostwhite;
+    white-space: initial;
+    text-align: center;
+  }
+  .characters{
+    color: ghostwhite;
+    padding: 0;
+  }
+  h6{
+    color: ghostwhite;
+  }
+  .thumb{
+    color: ghostwhite;
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    font-size: 25px;
+  }
+  .submit{
+    height: 30px;
+    width: 120px;
+  }
+  .bookmark{
+    font-size: 20px;
+    color: ghostwhite;
+  }
+  .placement{
+    display: flex;
+    justify-content: space-between;
   }
 }

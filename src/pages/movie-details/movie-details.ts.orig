@@ -6,9 +6,12 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {ReviewType} from '../../interfaces/ReviewType';
+<<<<<<< HEAD
+import _ from "lodash";
+=======
 import _ from 'lodash';
 import {Review} from "../../interfaces/Review";
-import {UserDetailsProvider} from '../../providers/user-details/user-details';
+>>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
 
 
 /**
@@ -34,7 +37,11 @@ export class MovieDetailsPage {
   reviewText = "";
   maxCharacters = 140;
   private reviewType: ReviewType;
+<<<<<<< HEAD
+  reviews = [];
+=======
   private reviews = [];
+>>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
   userId: string;
 
 
@@ -42,8 +49,7 @@ export class MovieDetailsPage {
               public navParams: NavParams,
               private movieApi: MovieApiProvider,
               private angularFireAuth: AngularFireAuth,
-              private firebase: AngularFireDatabase,
-              private logIn: UserDetailsProvider) {
+              private firebase: AngularFireDatabase) {
 
 
 
@@ -70,16 +76,16 @@ export class MovieDetailsPage {
   }
 
   submitReview(){
-    if(this.logIn.logs == true) {
+    if(!this.reviewType){
+      //popup
+    }
+    else {
       this.userId = this.angularFireAuth.auth.currentUser.uid;
       this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
         reviewType: this.reviewType,
         review: this.reviewText
       });
       this.reviewText = '';
-    }
-    else {
-      alert("YOU NO LOG")
     }
   }
   positive(){
@@ -92,18 +98,31 @@ export class MovieDetailsPage {
 
   }
   displayReviews() {
+<<<<<<< HEAD
+    this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
+      //this.reviews = object;
+      _.forIn(object, function(value, key) {
+        this.reviews.push({
+=======
     let array = [];
     this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
       console.log(object);
       _.forIn(object, function(value, key) {
         array.push({
+>>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
           userId: key,
           review: object[key].review,
           reviewType: object[key].reviewType
         })
+<<<<<<< HEAD
+
+
+      })
+=======
       });
       this.reviews = array;
 
+>>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
     });
   }
   addToFavorites(){

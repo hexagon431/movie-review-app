@@ -4,7 +4,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from "firebase/app";
 import {HomePage} from "../home/home";
-// import { AngularFireDatabase} from "angularfire2/database";
 
 
 @Component({
@@ -24,7 +23,6 @@ export class LoginPage {
     private angularFireAuth: AngularFireAuth,
     private angularFirestore: AngularFirestore,
     private navCtrl: NavController){
-    // add 'private angularFireDatabase: AngularFireDatabase'
   }
 
   login(){

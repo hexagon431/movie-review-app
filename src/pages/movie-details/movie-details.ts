@@ -10,7 +10,6 @@ import _ from 'lodash';
 import {Review} from "../../interfaces/Review";
 import {UserDetailsProvider} from '../../providers/user-details/user-details';
 
-
 /**
  * Generated class for the MovieDetailsPage page.
  *
@@ -33,7 +32,7 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
-  private reviewType: ReviewType;
+  private reviewType: string;
   private reviews = [];
   userId: string;
 
@@ -71,25 +70,30 @@ export class MovieDetailsPage {
 
   submitReview(){
     if(this.logIn.logs == true) {
-      this.userId = this.angularFireAuth.auth.currentUser.uid;
-      this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
-        reviewType: this.reviewType,
-        review: this.reviewText
-      });
-      this.reviewText = '';
+      if(this.reviewType != '' && this.reviewText != '') {
+        this.userId = this.angularFireAuth.auth.currentUser.uid;
+        this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
+          reviewType: this.reviewType,
+          review: this.reviewText
+        });
+        this.reviewText = '';
+        this.reviewType = '';
+      }
+      else {
+        alert("Please write a review and select the thumbs up or down");
+      }
     }
     else {
       alert("YOU NO LOG")
     }
   }
   positive(){
-    this.reviewType = ReviewType.POSITIVE;
-    console.log(ReviewType.POSITIVE)
+    this.reviewType = "Positive";
+    console.log(this.reviewType);
   }
   negative(){
-    this.reviewType = ReviewType.NEGATIVE;
-    console.log(ReviewType.NEGATIVE)
-
+    this.reviewType = "Negative";
+    console.log(this.reviewType);
   }
   displayReviews() {
     let array = [];
@@ -107,8 +111,13 @@ export class MovieDetailsPage {
     });
   }
   addToFavorites(){
-    //add crap to a personalized favorites array visible on favorites page
-    console.log("Movie added to favorites");
+    if(this.logIn.logs == true) {
+      //add crap to a personalized favorites array visible on favorites page
+      console.log("Movie added to favorites");
+    }
+    else{
+      alert("YOU NO LOG");
+    }
   }
 
 }

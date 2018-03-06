@@ -27,8 +27,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public angularFireAuth: AngularFireAuth, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private log: UserDetailsProvider) {
-    this.initializeApp();
+  constructor(public angularFireAuth: AngularFireAuth,
+              public platform: Platform,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              private log: UserDetailsProvider
+
+  ) {this.initializeApp();
 
    // angularFireAuth.auth.signOut();
 

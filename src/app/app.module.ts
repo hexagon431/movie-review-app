@@ -19,6 +19,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {UserDetailsProvider} from "../providers/user-details/user-details";
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +27,7 @@ import {UserDetailsProvider} from "../providers/user-details/user-details";
     ListPage,
     MovieDetailsPage,
     MovieSearchPage,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,

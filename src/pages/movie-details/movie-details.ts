@@ -9,6 +9,8 @@ import {ReviewType} from '../../interfaces/ReviewType';
 import _ from 'lodash';
 import {Review} from "../../interfaces/Review";
 import {UserDetailsProvider} from '../../providers/user-details/user-details';
+import {ToastController} from 'ionic-angular';
+
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -32,7 +34,7 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
-  private reviewType: string;
+  private reviewType = '';
   private reviews = [];
   userId: string;
   favorite = false;
@@ -45,7 +47,8 @@ export class MovieDetailsPage {
               private movieApi: MovieApiProvider,
               private angularFireAuth: AngularFireAuth,
               private firebase: AngularFireDatabase,
-              private logIn: UserDetailsProvider) {
+              private logIn: UserDetailsProvider,
+              private toastCtrl: ToastController) {
 
 
 
@@ -85,11 +88,11 @@ export class MovieDetailsPage {
         this.pos = false;
       }
       else {
-        alert("Please write a review and select the thumbs up or down");
+        this.clickToastFail();
       }
     }
     else {
-      alert("YOU NO LOG")
+      this.toastLogFail();
     }
   }
   positive(){
@@ -107,10 +110,12 @@ export class MovieDetailsPage {
   noReview(){
     if(this.neg == true){
       this.neg = false;
+      this.reviewType = '';
       console.log("Review deselected");
     }
     if(this.pos == true){
       this.pos = false;
+      this.reviewType = '';
       console.log("Review deselected");
     }
   }
@@ -143,12 +148,29 @@ export class MovieDetailsPage {
       this.favorite = true;
     }
     else{
-      alert("YOU NO LOG");
+      this.toastLogFail();
     }
   }
   removeFavorite(){
     console.log('Movie removed from favorites');
     this.favorite = false;
+  }
+  toastLogFail() {
+    let toast = this.toastCtrl.create({
+      message: 'YOU NO LOG',
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.present();
+  }
+  clickToastFail(){
+    let toast2 = this.toastCtrl.create({
+      message: 'Please write a review and select the thumbs up or down.',
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast2.present();
   }
 
 }

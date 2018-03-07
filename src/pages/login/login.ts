@@ -17,6 +17,7 @@ import {UserDetailsProvider} from "../../providers/user-details/user-details";
 export class LoginPage {
   email: string;
   password: string;
+  confirmPassword: string;
   username: string;
   loginMode: boolean = true;
   currentUser;
@@ -27,52 +28,70 @@ export class LoginPage {
     private navCtrl: NavController,
     private firebase: AngularFireDatabase,
     private userDetails: UserDetailsProvider){
+
+    // if(this.angularFireAuth.auth.currentUser){
+    //   this.angularFireAuth.auth.getRedirectResult().then(result => {
+    //     this.currentUser = this.angularFireAuth.auth.currentUser.uid;
+    //
+    //     this.firebase.object(`users/${this.currentUser}`).set({
+    //       userId: this.angularFireAuth.auth.currentUser.displayName,
+    //       email: this.angularFireAuth.auth.currentUser.email,
+    //       //password: this.password,
+    //       favorites: []
+    //     });
+    //   })
+    // }
+
   }
 
   login(){
     this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(result => {
       this.currentUser = this.angularFireAuth.auth.currentUser.uid;
+
       this.angularFirestore.collection('users').add({name: name}).then(data=> {
         console.log(data);
         this.navCtrl.setRoot(HomePage);
         console.log(this.angularFireAuth.auth.currentUser);
-
-        this.firebase.object(`users/${this.currentUser}`).set({
-          userId: this.currentUser,
-          email: this.email,
-          password: this.password
-        });
-
         this.userDetails.setCurrentUser(this.angularFireAuth.auth.currentUser);
       });
     });
   }
 
   fbLogin(){
-    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider()).then(result => {
+      this.currentUser = this.angularFireAuth.auth.currentUser.uid;
 
-    this.angularFirestore.collection('users').add({name: "User"}).then(data=> {
-      console.log(data);
+      this.firebase.object(`users/${this.currentUser}`).set({
+        username: this.angularFireAuth.auth.currentUser.displayName,
+        email: this.angularFireAuth.auth.currentUser.email
+      });
     });
   }
-  googleLogin(){
-    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
 
-    this.angularFirestore.collection('users').add({name: "user"}).then(data => {
-      console.log(data);
+  googleLogin(){
+    this.angularFireAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()).then(result => {
+      this.currentUser = this.angularFireAuth.auth.currentUser.uid;
+
+      this.firebase.object(`users/${this.currentUser}`).set({
+        username: this.angularFireAuth.auth.currentUser.displayName,
+        email: this.angularFireAuth.auth.currentUser.email
+      });
     });
   }
 
   toggleLoginMode() {
     this.loginMode = !this.loginMode;
-
   }
 
  signUp(){
-   this.angularFireAuth.auth.createUserWithEmailAndPassword(this.email, this.password);
-   this.angularFirestore.collection('users').add({name: this.username}).then(data => {
-     console.log(data);
+   this.angularFireAuth.auth.createUserWithEmailAndPassword(this.email, this.password).then(result => {
+     this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
+       username: this.username,
+       email: this.angularFireAuth.auth.currentUser.email
      });
+   });
+
+
    this.navCtrl.setRoot(HomePage);
 
   }

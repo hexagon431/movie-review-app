@@ -17,7 +17,6 @@ import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
 import {AngularFireDatabase} from 'angularfire2/database';
 import {UserDetailsProvider} from "../providers/user-details/user-details";
-import fontawesome from '@fontawesome/fontawesome';
 
 
 @NgModule({

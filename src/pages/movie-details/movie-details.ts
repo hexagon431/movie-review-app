@@ -104,6 +104,14 @@ export class MovieDetailsPage {
     this.neg = true;
     this.pos = false;
   }
+  noReview(){
+    if(this.neg == true){
+      this.neg = false;
+    }
+    if(this.pos == true){
+      this.pos = false;
+    }
+  }
   displayReviews() {
     let array = [];
     this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
@@ -120,6 +128,12 @@ export class MovieDetailsPage {
 
     });
   }
+  // addToFavorites(mId){
+  //   let favorites = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`);
+  //   console.log(favorites);
+  //   favorites.push(mId);
+  //   //this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`)
+  //   console.log("Movie added to favorites");
   addToFavorites(){
     if(this.logIn.logs == true) {
       //add crap to a personalized favorites array visible on favorites page
@@ -130,7 +144,6 @@ export class MovieDetailsPage {
       alert("YOU NO LOG");
     }
   }
-
   removeFavorite(){
     console.log('Movie removed from favorites');
     this.favorite = false;

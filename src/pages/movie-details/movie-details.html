@@ -72,10 +72,10 @@
         <span class="characters">{{maxCharacters - reviewText.length}} characters</span><br>
 
         <span *ngIf="neg == false" (click)="negative()"><i class="far fa-thumbs-down thumb"></i></span>
-        <span *ngIf="neg == true"><i class="fas fa-thumbs-down thumb"></i></span>
+        <span *ngIf="neg == true" (click)="noReview()"><i class="fas fa-thumbs-down thumb"></i></span>
 
         <span *ngIf="pos == false" (click)="positive()"><i class="far fa-thumbs-up thumb"></i></span>
-        <span *ngIf="pos == true"><i class="fas fa-thumbs-up thumb"></i></span>
+        <span *ngIf="pos == true" (click)="noReview()"><i class="fas fa-thumbs-up thumb"></i></span>
 
 
         <button class="submit" ion-button (click)="submitReview()">Submit<span><ion-icon name="create-outline" icon-right></ion-icon></span></button>

@@ -35,6 +35,9 @@ export class MovieDetailsPage {
   private reviewType: string;
   private reviews = [];
   userId: string;
+  favorite = false;
+  pos = false;
+  neg = false;
 
 
   constructor(public navCtrl: NavController,
@@ -78,6 +81,8 @@ export class MovieDetailsPage {
         });
         this.reviewText = '';
         this.reviewType = '';
+        this.neg = false;
+        this.pos = false;
       }
       else {
         alert("Please write a review and select the thumbs up or down");
@@ -90,10 +95,14 @@ export class MovieDetailsPage {
   positive(){
     this.reviewType = "Positive";
     console.log(this.reviewType);
+    this.pos = true;
+    this.neg = false;
   }
   negative(){
     this.reviewType = "Negative";
     console.log(this.reviewType);
+    this.neg = true;
+    this.pos = false;
   }
   displayReviews() {
     let array = [];
@@ -114,10 +123,16 @@ export class MovieDetailsPage {
     if(this.logIn.logs == true) {
       //add crap to a personalized favorites array visible on favorites page
       console.log("Movie added to favorites");
+      this.favorite = true;
     }
     else{
       alert("YOU NO LOG");
     }
+  }
+
+  removeFavorite(){
+    console.log('Movie removed from favorites');
+    this.favorite = false;
   }
 
 }

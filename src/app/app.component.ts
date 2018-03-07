@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import {Nav, NavController, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
@@ -31,7 +31,8 @@ export class MyApp {
               public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
-              private log: UserDetailsProvider
+              private log: UserDetailsProvider,
+             // private navCtrl: NavController
 
   ) {this.initializeApp();
 

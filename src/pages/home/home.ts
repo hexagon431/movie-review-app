@@ -4,6 +4,9 @@ import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {Observable} from "rxjs/Observable";
 import {MovieDetailsPage} from "../movie-details/movie-details";
 import {MovieSearchPage} from "../movie-search/movie-search";
+import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from "angularfire2/database";
+import {UserDetailsProvider} from "../../providers/user-details/user-details";
 
 
 
@@ -55,10 +58,24 @@ export class HomePage {
   favorites: any[];
 
   constructor(public navCtrl: NavController,
-              public movie: MovieApiProvider) { }
+              public movie: MovieApiProvider,
+              public angularFireAuth: AngularFireAuth,
+              public firebase: AngularFireDatabase,
+              public userStuff: UserDetailsProvider) {
+
+
+  }
 
   ionViewDidLoad() {
-      console.log(this.title);
+
+    if (this.angularFireAuth.auth.currentUser){
+      this.angularFireAuth.auth.getRedirectResult().then(result => {
+        this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
+          username: this.angularFireAuth.auth.currentUser.displayName,
+          email: this.angularFireAuth.auth.currentUser.email,
+        });
+      })
+    }
 
       this.movie.getPopularMovies().subscribe(
         popular => this.popular = popular.results.sort(function compare(a, b) {
@@ -93,6 +110,8 @@ export class HomePage {
 
       this.movie.getMoviesByGenre('35').subscribe(
         comedy => this.comedy = comedy.results);
+
+      //this.userStuff.getUserFavorites();
 
     this.loaded = true;
   }

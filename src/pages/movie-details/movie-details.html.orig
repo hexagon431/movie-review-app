@@ -23,10 +23,14 @@
         <div class="movie-title">{{selectedMovie.title}}</div>
         <div class="placement">
           <div class="movie-release-year"> {{movieReleaseDate.getFullYear()}}</div>
+<<<<<<< HEAD
+          <div class="bookmark"><ion-icon name="ios-bookmark-outline" (click)="addToFavorites(movieId)"></ion-icon></div>
+=======
           <div class="bookmark">
             <span *ngIf="favorite == false" (click)="addToFavorites()"><i class="far fa-bookmark"></i></span>
             <span *ngIf="favorite == true" (click)="removeFavorite()"><i class="fas fa-bookmark"></i></span>
           </div>
+>>>>>>> f93e4456a28474bb849ab7a06cfaa775a87bebff
         </div>
       </div>
 
@@ -68,10 +72,10 @@
         <span class="characters">{{maxCharacters - reviewText.length}} characters</span><br>
 
         <span *ngIf="neg == false" (click)="negative()"><i class="far fa-thumbs-down thumb"></i></span>
-        <span *ngIf="neg == true" (click)="noReview()"><i class="fas fa-thumbs-down thumb"></i></span>
+        <span *ngIf="neg == true"><i class="fas fa-thumbs-down thumb"></i></span>
 
         <span *ngIf="pos == false" (click)="positive()"><i class="far fa-thumbs-up thumb"></i></span>
-        <span *ngIf="pos == true" (click)="noReview()"><i class="fas fa-thumbs-up thumb"></i></span>
+        <span *ngIf="pos == true"><i class="fas fa-thumbs-up thumb"></i></span>
 
 
         <button class="submit" ion-button (click)="submitReview()">Submit<span><ion-icon name="create-outline" icon-right></ion-icon></span></button>
@@ -80,11 +84,7 @@
   </ion-card>
 
   <ion-card class="card-details" *ngFor="let review of reviews">
-    <ion-card-header style="color: ghostwhite">
-      <ion-icon name="thumbs-down" *ngIf="review.reviewType=='Negative'"></ion-icon>
-      <ion-icon name="thumbs-up" *ngIf="review.reviewType=='Positive'"></ion-icon>
-      {{review.reviewType}}
-    </ion-card-header>
+    <ion-card-header style="color: ghostwhite">{{review.reviewType}}</ion-card-header>
     <ion-card-content style="color: ghostwhite">{{review.review}}</ion-card-content>
   </ion-card>
 

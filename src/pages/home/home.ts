@@ -63,16 +63,19 @@ export class HomePage {
               public firebase: AngularFireDatabase,
               public userStuff: UserDetailsProvider) {
 
+
   }
 
   ionViewDidLoad() {
 
-    this.angularFireAuth.auth.getRedirectResult().then(result => {
-      this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
-        username: this.angularFireAuth.auth.currentUser.displayName,
-        email: this.angularFireAuth.auth.currentUser.email,
-      });
-    })
+    if (this.angularFireAuth.auth.currentUser){
+      this.angularFireAuth.auth.getRedirectResult().then(result => {
+        this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
+          username: this.angularFireAuth.auth.currentUser.displayName,
+          email: this.angularFireAuth.auth.currentUser.email,
+        });
+      })
+    }
 
       this.movie.getPopularMovies().subscribe(
         popular => this.popular = popular.results.sort(function compare(a, b) {

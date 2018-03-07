@@ -108,6 +108,7 @@ export class MovieDetailsPage {
     let array = [];
     this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
       console.log(object);
+      array = [];
       _.forIn(object, function(value, key) {
         array.push({
           userId: key,

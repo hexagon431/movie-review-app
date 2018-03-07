@@ -4,6 +4,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from 'firebase/app';
+import {AngularFireDatabase} from "angularfire2/database";
 
 @Injectable()
 export class UserDetailsProvider {
@@ -12,8 +13,9 @@ export class UserDetailsProvider {
 
   public userAuthState: Observable<any>;
   public logs: boolean;
+  public favorites = [];
 
-  constructor(public angularFireAuth: AngularFireAuth){
+  constructor(public angularFireAuth: AngularFireAuth, public firebase: AngularFireDatabase){
 
 
 
@@ -48,7 +50,16 @@ export class UserDetailsProvider {
   }
 
   getUserFavorites(){
-
+    let favs = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`).orderByKey();
+    favs.once("value").then(snapshot => {
+      snapshot.forEach(childSnapshot => {
+        let key = childSnapshot.key;
+        this.favorites.push(key);
+        console.log(key);
+        let childData = childSnapshot.val();
+        console.log(childData);
+      })
+    })
   }
 
 

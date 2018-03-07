@@ -30,19 +30,6 @@ export class MyApp {
   constructor(public angularFireAuth: AngularFireAuth, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private log: UserDetailsProvider) {
     this.initializeApp();
 
-   // angularFireAuth.auth.signOut();
-
-
-    //   this.angularFireAuth.authState.subscribe(res => {
-    //   if (res && res.uid) {
-    //     this.loggedIn = true;
-    //     console.log('user is logged in');
-    //   } else {
-    //     this.loggedIn = false;
-    //     console.log('user not logged in');
-    //   }
-    // });
-
     this.pages = [
       { title: 'Home', component: HomePage },
      // { title: 'Login', component: LoginPage }

@@ -106,8 +106,11 @@ export class MovieDetailsPage {
 
     });
   }
-  addToFavorites(){
-    //add crap to a personalized favorites array visible on favorites page
+  addToFavorites(mId){
+    let favorites = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`);
+    console.log(favorites);
+    favorites.push(mId);
+    //this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`)
     console.log("Movie added to favorites");
   }
 

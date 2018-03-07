@@ -23,7 +23,7 @@
         <div class="movie-title">{{selectedMovie.title}}</div>
         <div class="placement">
           <div class="movie-release-year"> {{movieReleaseDate.getFullYear()}}</div>
-          <div class="bookmark"><ion-icon name="ios-bookmark-outline" (click)="addToFavorites()"></ion-icon></div>
+          <div class="bookmark"><ion-icon name="ios-bookmark-outline" (click)="addToFavorites(movieId)"></ion-icon></div>
         </div>
       </div>
 

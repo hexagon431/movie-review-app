@@ -107,9 +107,11 @@ export class MovieDetailsPage {
   noReview(){
     if(this.neg == true){
       this.neg = false;
+      console.log("Review deselected");
     }
     if(this.pos == true){
       this.pos = false;
+      console.log("Review deselected");
     }
   }
   displayReviews() {

@@ -10,7 +10,6 @@ import _ from 'lodash';
 import {Review} from "../../interfaces/Review";
 import {UserDetailsProvider} from '../../providers/user-details/user-details';
 
-
 /**
  * Generated class for the MovieDetailsPage page.
  *
@@ -33,9 +32,12 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
-  private reviewType: ReviewType;
+  private reviewType: string;
   private reviews = [];
   userId: string;
+  favorite = false;
+  pos = false;
+  neg = false;
 
 
   constructor(public navCtrl: NavController,
@@ -71,30 +73,42 @@ export class MovieDetailsPage {
 
   submitReview(){
     if(this.logIn.logs == true) {
-      this.userId = this.angularFireAuth.auth.currentUser.uid;
-      this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
-        reviewType: this.reviewType,
-        review: this.reviewText
-      });
-      this.reviewText = '';
+      if(this.reviewType != '' && this.reviewText != '') {
+        this.userId = this.angularFireAuth.auth.currentUser.uid;
+        this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
+          reviewType: this.reviewType,
+          review: this.reviewText
+        });
+        this.reviewText = '';
+        this.reviewType = '';
+        this.neg = false;
+        this.pos = false;
+      }
+      else {
+        alert("Please write a review and select the thumbs up or down");
+      }
     }
     else {
       alert("YOU NO LOG")
     }
   }
   positive(){
-    this.reviewType = ReviewType.POSITIVE;
-    console.log(ReviewType.POSITIVE)
+    this.reviewType = "Positive";
+    console.log(this.reviewType);
+    this.pos = true;
+    this.neg = false;
   }
   negative(){
-    this.reviewType = ReviewType.NEGATIVE;
-    console.log(ReviewType.NEGATIVE)
-
+    this.reviewType = "Negative";
+    console.log(this.reviewType);
+    this.neg = true;
+    this.pos = false;
   }
   displayReviews() {
     let array = [];
     this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
       console.log(object);
+      array = [];
       _.forIn(object, function(value, key) {
         array.push({
           userId: key,
@@ -106,12 +120,26 @@ export class MovieDetailsPage {
 
     });
   }
-  addToFavorites(mId){
-    let favorites = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`);
-    console.log(favorites);
-    favorites.push(mId);
-    //this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`)
-    console.log("Movie added to favorites");
+  // addToFavorites(mId){
+  //   let favorites = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`);
+  //   console.log(favorites);
+  //   favorites.push(mId);
+  //   //this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`)
+  //   console.log("Movie added to favorites");
+  addToFavorites(){
+    if(this.logIn.logs == true) {
+      //add crap to a personalized favorites array visible on favorites page
+      console.log("Movie added to favorites");
+      this.favorite = true;
+    }
+    else{
+      alert("YOU NO LOG");
+    }
+  }
+
+  removeFavorite(){
+    console.log('Movie removed from favorites');
+    this.favorite = false;
   }
 
 }

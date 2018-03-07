@@ -6,13 +6,9 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {ReviewType} from '../../interfaces/ReviewType';
-<<<<<<< HEAD
-import _ from "lodash";
-=======
 import _ from 'lodash';
 import {Review} from "../../interfaces/Review";
->>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
-
+import {UserDetailsProvider} from '../../providers/user-details/user-details';
 
 /**
  * Generated class for the MovieDetailsPage page.
@@ -36,20 +32,20 @@ export class MovieDetailsPage {
   private loginState;
   reviewText = "";
   maxCharacters = 140;
-  private reviewType: ReviewType;
-<<<<<<< HEAD
-  reviews = [];
-=======
+  private reviewType: string;
   private reviews = [];
->>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
   userId: string;
+  favorite = false;
+  pos = false;
+  neg = false;
 
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private movieApi: MovieApiProvider,
               private angularFireAuth: AngularFireAuth,
-              private firebase: AngularFireDatabase) {
+              private firebase: AngularFireDatabase,
+              private logIn: UserDetailsProvider) {
 
 
 
@@ -76,58 +72,77 @@ export class MovieDetailsPage {
   }
 
   submitReview(){
-    if(!this.reviewType){
-      //popup
+    if(this.logIn.logs == true) {
+      if(this.reviewType != '' && this.reviewText != '') {
+        this.userId = this.angularFireAuth.auth.currentUser.uid;
+        this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
+          reviewType: this.reviewType,
+          review: this.reviewText
+        });
+        this.reviewText = '';
+        this.reviewType = '';
+        this.neg = false;
+        this.pos = false;
+      }
+      else {
+        alert("Please write a review and select the thumbs up or down");
+      }
     }
     else {
-      this.userId = this.angularFireAuth.auth.currentUser.uid;
-      this.firebase.object(`reviews/${this.movieId}/${this.userId}`).set({
-        reviewType: this.reviewType,
-        review: this.reviewText
-      });
-      this.reviewText = '';
+      alert("YOU NO LOG")
     }
   }
   positive(){
-    this.reviewType = ReviewType.POSITIVE;
-    console.log(ReviewType.POSITIVE)
+    this.reviewType = "Positive";
+    console.log(this.reviewType);
+    this.pos = true;
+    this.neg = false;
   }
   negative(){
-    this.reviewType = ReviewType.NEGATIVE;
-    console.log(ReviewType.NEGATIVE)
-
+    this.reviewType = "Negative";
+    console.log(this.reviewType);
+    this.neg = true;
+    this.pos = false;
   }
   displayReviews() {
-<<<<<<< HEAD
-    this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
-      //this.reviews = object;
-      _.forIn(object, function(value, key) {
-        this.reviews.push({
-=======
     let array = [];
     this.firebase.object(`reviews/${this.movieId}`).valueChanges().subscribe( object => {
       console.log(object);
+      array = [];
       _.forIn(object, function(value, key) {
         array.push({
->>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
           userId: key,
           review: object[key].review,
           reviewType: object[key].reviewType
         })
-<<<<<<< HEAD
-
-
-      })
-=======
       });
       this.reviews = array;
 
->>>>>>> 6d49a781def5670cbd98bfa5441750726a001ab2
     });
   }
-  addToFavorites(){
-    //add crap to a personalized favorites array visible on favorites page
+<<<<<<< HEAD
+  addToFavorites(mId){
+    let favorites = this.firebase.database.ref(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`);
+    console.log(favorites);
+    favorites.push(mId);
+    //this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}/favorites`)
     console.log("Movie added to favorites");
+=======
+  addToFavorites(){
+    if(this.logIn.logs == true) {
+      //add crap to a personalized favorites array visible on favorites page
+      console.log("Movie added to favorites");
+      this.favorite = true;
+    }
+    else{
+      alert("YOU NO LOG");
+    }
+  }
+
+  removeFavorite(){
+    console.log('Movie removed from favorites');
+    this.favorite = false;
+>>>>>>> f93e4456a28474bb849ab7a06cfaa775a87bebff
   }
 
 }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {MovieApiProvider} from "../../providers/movie-api/movie-api";
 import {Observable} from "rxjs/Observable";
-import {Nav} from "ionic-angular";
 import {MovieDetailsPage} from "../movie-details/movie-details";
 import {MovieSearchPage} from "../movie-search/movie-search";
 import {AngularFireAuth} from "angularfire2/auth";

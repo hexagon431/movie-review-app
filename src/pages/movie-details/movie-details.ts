@@ -142,6 +142,7 @@ export class MovieDetailsPage {
   addToFavorites(){
     if(this.logIn.logs == true) {
       //add crap to a personalized favorites array visible on favorites page
+
       console.log("Movie added to favorites");
       this.favorite = true;
     }

@@ -31,6 +31,7 @@
     "cordova-browser": "5.0.3",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-firebase": "^0.1.25",
+    "cordova-plugin-ionic": "^4.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -56,7 +57,15 @@
       "cordova-plugin-device": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-firebase": {}
+      "cordova-plugin-firebase": {},
+      "cordova-plugin-ionic": {
+        "APP_ID": "f3f7a7eb",
+        "CHANNEL_NAME": "Master",
+        "UPDATE_METHOD": "background",
+        "WARN_DEBUG": "true",
+        "UPDATE_API": "https://api.ionicjs.com",
+        "MAX_STORE": "2"
+      }
     },
     "platforms": [
       "browser"

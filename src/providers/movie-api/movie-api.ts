@@ -10,6 +10,7 @@ export class MovieApiProvider {
   movieSearchBaseUrl: string = 'https://api.themoviedb.org/3/movie/';
   discoverMoviesBaseUrl: string = 'https://api.themoviedb.org/3/discover/movie';
   moviePosterBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
+  youtubeBaseUrl = 'https://www.youtube.com/watch?v=';
   apiKey = "?api_key=74cff56e7a570daac9b5d7fae1093dc0";
   movies: any = {};
   trailers: any = {};
@@ -93,6 +94,10 @@ export class MovieApiProvider {
       this.trailers = response;
       return this.trailers;
       })
+  }
+
+  getTrailerUrl(trailerKey){
+    return `${this.youtubeBaseUrl}${trailerKey}`
   }
 
 }

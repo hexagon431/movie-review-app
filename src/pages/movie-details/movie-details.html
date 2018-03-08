@@ -53,7 +53,7 @@
 
         <div class="info" *ngSwitchCase="'trailers'">
           <div class="trailer" *ngFor="let trailer of trailers">
-            <a  href="{{youtubeBaseUrl + trailer.key}}">{{trailer.name}}</a>
+            <a  href="{{movieApi.getTrailerUrl(trailer.key)}}">{{trailer.name}}</a>
           </div>
           <div class="notrailers" *ngIf="trailers.length == 0">
             No trailers available.

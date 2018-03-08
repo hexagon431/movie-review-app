@@ -63,12 +63,18 @@ export class HomePage {
               public firebase: AngularFireDatabase,
               public userStuff: UserDetailsProvider) {
 
+    if (this.userStuff.logs){
+      this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
+        username: this.angularFireAuth.auth.currentUser.displayName,
+        email: this.angularFireAuth.auth.currentUser.email,
+      });
+    }
 
   }
 
   ionViewDidLoad() {
 
-    if (this.userStuff.logs){
+    if (this.angularFireAuth.auth.currentUser != null){
       this.angularFireAuth.auth.getRedirectResult().then(result => {
         this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
           username: this.angularFireAuth.auth.currentUser.displayName,

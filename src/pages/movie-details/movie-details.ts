@@ -159,7 +159,7 @@ export class MovieDetailsPage {
 
   toastLogFail() {
     let toast = this.toastCtrl.create({
-      message: 'You need to be logged in do perform this action.',
+      message: 'You need to be logged in to perform this action.',
       duration: 3000,
       position: 'bottom'
     });

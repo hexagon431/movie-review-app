@@ -38,6 +38,9 @@ export class MovieDetailsPage {
   favorite = false;
   pos = false;
   neg = false;
+  private trailers = [];
+  private youtubeBaseUrl = 'https://www.youtube.com/watch?v=';
+
 
 
   constructor(public navCtrl: NavController,
@@ -56,6 +59,11 @@ export class MovieDetailsPage {
       console.log(data);
       this.selectedMovie = data;
       this.movieReleaseDate = new Date(this.selectedMovie.release_date);
+    });
+
+    this.movieApi.getMovieTrailers(this.movieId).subscribe(data => {
+      this.trailers = data.results;
+      console.log("trailers: " + data);
     });
 
     this.angularFireAuth.authState.subscribe(state => {

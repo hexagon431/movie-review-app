@@ -12,6 +12,7 @@ export class MovieApiProvider {
   moviePosterBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
   apiKey = "?api_key=74cff56e7a570daac9b5d7fae1093dc0";
   movies: any = {};
+  trailers: any = {};
 
 
   constructor(private http: HttpClient) {
@@ -84,6 +85,14 @@ export class MovieApiProvider {
 
   getBackdropPath(pathUrl: string){
     return `${this.moviePosterBaseUrl}${pathUrl}`;
+  }
+
+  getMovieTrailers(mId){
+    return this.http.get(`https://api.themoviedb.org/3/movie/${mId}/videos${this.apiKey}`)
+      .map((response: Response) => {
+      this.trailers = response;
+      return this.trailers;
+      })
   }
 
 }

@@ -68,7 +68,7 @@ export class HomePage {
 
   ionViewDidLoad() {
 
-    if (this.angularFireAuth.auth.currentUser){
+    if (this.userStuff.logs){
       this.angularFireAuth.auth.getRedirectResult().then(result => {
         this.firebase.object(`users/${this.angularFireAuth.auth.currentUser.uid}`).set({
           username: this.angularFireAuth.auth.currentUser.displayName,

@@ -161,7 +161,7 @@ export class MovieDetailsPage {
     let toast = this.toastCtrl.create({
       message: 'You need to be logged in to perform this action.',
       duration: 3000,
-      position: 'bottom'
+      position: 'top'
     });
 
     toast.present();
@@ -170,7 +170,7 @@ export class MovieDetailsPage {
     let toast2 = this.toastCtrl.create({
       message: 'Please write a review and select the thumbs up or down.',
       duration: 3000,
-      position: 'bottom'
+      position: 'top'
     });
     toast2.present();
   }

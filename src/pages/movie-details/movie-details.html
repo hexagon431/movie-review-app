@@ -67,7 +67,7 @@
   <ion-card *ngIf="selectedMovie"  class="card-details">
     <ion-card-header class="review-title">Movie Reviews</ion-card-header>
     <ion-card-content>
-      <h6>Write a review</h6>
+      <h6 class="write-review">Write a review</h6>
       <form>
         <ion-textarea [(ngModel)]="reviewText" class="text" maxlength="140" name="text" required></ion-textarea>
         <span class="characters">{{maxCharacters - reviewText.length}} characters</span><br>

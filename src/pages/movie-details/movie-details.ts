@@ -38,6 +38,7 @@ export class MovieDetailsPage {
   favorite = false;
   pos = false;
   neg = false;
+  private trailers = [];
 
 
   constructor(public navCtrl: NavController,
@@ -56,6 +57,10 @@ export class MovieDetailsPage {
       console.log(data);
       this.selectedMovie = data;
       this.movieReleaseDate = new Date(this.selectedMovie.release_date);
+    });
+
+    this.movieApi.getMovieTrailers(this.movieId).subscribe(data => {
+      this.trailers = data.results;
     });
 
     this.angularFireAuth.authState.subscribe(state => {

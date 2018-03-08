@@ -52,7 +52,12 @@
         </div>
 
         <div class="info" *ngSwitchCase="'trailers'">
-          trailers go here
+          <div class="trailer" *ngFor="let trailer of trailers">
+            <a  href="{{movieApi.getTrailerUrl(trailer.key)}}">{{trailer.name}}</a>
+          </div>
+          <div class="notrailers" *ngIf="trailers.length == 0">
+            No trailers available.
+          </div>
         </div>
       </div>
 
